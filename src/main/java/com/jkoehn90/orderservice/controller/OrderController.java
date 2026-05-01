@@ -4,6 +4,7 @@ import com.jkoehn90.orderservice.dto.OrderRequest;
 import com.jkoehn90.orderservice.dto.OrderResponse;
 import com.jkoehn90.orderservice.entity.OrderStatus;
 import com.jkoehn90.orderservice.service.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class OrderController {
 
     // POST /orders — Place a new order
     @PostMapping
-    public ResponseEntity<OrderResponse> placeOrder(@RequestBody OrderRequest request) {
+    public ResponseEntity<OrderResponse> placeOrder(@Valid @RequestBody OrderRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(orderService.placeOrder(request));
     }
 
