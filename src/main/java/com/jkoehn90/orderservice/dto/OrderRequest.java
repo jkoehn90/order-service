@@ -1,5 +1,6 @@
 package com.jkoehn90.orderservice.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -19,5 +20,6 @@ public class OrderRequest {
     private Long userId;
 
     @NotEmpty(message = "Order must contain at least one item")
+    @Valid // ← This cascades validation into each OrderItemRequest
     private List<OrderItemRequest> items;
 }
